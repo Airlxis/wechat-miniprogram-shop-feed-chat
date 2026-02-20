@@ -1,0 +1,133 @@
+/* pages/shopping/shopping.wxss */
+.search-container{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.searchinput{
+  flex: 5;
+  padding:19rpx;
+  margin-right:19rpx;
+  border: 2rpx solid #ddd;
+  border-radius: 10rpx;
+  background-color: rgb(216, 214, 214);
+}
+
+.searchbutton{
+  background-color: #f13148;
+  color: white;
+  border-radius: 10rpx;
+  flex: 1;
+  font-size: 35rpx;
+  font-weight: 1000;
+  align-items: center;
+  padding: 15rpx;
+}
+
+.TypeFilterContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  height: 396rpx;
+  padding: 19rpx;
+
+}
+
+.group{
+  justify-content: space-between;
+  display: flex;        
+  flex-wrap: wrap;     
+  align-items: center;  
+  padding: 58rpx;
+}
+
+.group1{
+  display: flex;        
+  flex-direction: column;
+  padding: 58rpx;
+}
+
+.scroll{
+  height: 158rpx;
+}
+
+.button{
+  margin-left: auto;
+}
+
+@font-face{
+  font-family: "Type";
+  src: url('https://zf.sc.chinaz.com/Files/DownLoad/upload/2023/0911/alimamafangyuanti.ttf'); 
+}
+
+.TypeText{
+  font-family: 'Type';
+  font-size: 34rpx;
+  color: #000000;
+}
+.TypeCheckBox0{
+  display: none;
+}
+
+.TypeCheckBox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10rpx;
+}
+
+.IPFilterContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 700rpx;
+  height: auto;
+  border: 5rpx solid black;
+  background-color: #fcfbf4;
+}
+
+.IPcheckbox0{
+ display: none;
+}
+
+.IPcheckbox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10rpx ;
+  border-radius: 11rpx;
+}
+.IProw{
+  margin-bottom: 15rpx;
+}
+
+@font-face{
+  font-family: "IP";
+  src: url('https://zf.sc.chinaz.com/Files/DownLoad/upload/2024/0617/tianguati_%E3%83%9E%E3%83%A1%E3%83%AD%E3%83%B3_.otf');
+}
+.IPtext{
+  font-family:'Type';
+}
+.goodsform{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 19rpx;
+
+}
+
+.singlegood{
+ width: 47%; /* 留出一点间隙，避免在某些屏幕上溢出 */
+ margin: 0 1.5% 19rpx;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+
+}
+
+
+.picture{
+  margin: 19rpx;
+  width: 100%;
+}

@@ -1,0 +1,132 @@
+/* pages/square/square.wxss */
+
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  margin: 10rpx;
+
+  }
+.swiper{
+    height: 1266rpx;
+}
+.input1{
+  height: 77rpx;
+  background-color: rgb(216, 214, 214);
+  width: 65%;
+  margin-left: auto;
+  margin-right: 19rpx;
+  margin-top: 19rpx;
+  margin-bottom:19rpx ;
+}
+.UserContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+ 
+}
+
+.avatar{
+  width: 96rpx;
+  height:96rpx;
+  border-radius: 19rpx;
+  margin-left:19rpx ;
+  margin-top: 19rpx;
+}
+
+.nikeName{
+  color: rgb(71, 108, 156);
+  font-weight: 600;
+  font-size: large;
+  margin-right: 96rpx;
+  margin-left:19rpx ;
+}
+
+.text{
+  margin-top: -80rpx;
+  margin-bottom: 15rpx;
+  font-size: large;
+}
+
+.image1{
+  width: 385rpx;
+  height: 385rpx;
+}
+
+.image2{
+  width: 289rpx;
+  height: 289rpx;
+
+}
+
+
+.image3{
+  width: 192rpx;
+  height: 192rpx;
+}
+
+.images4{
+  display: flex;
+  flex-wrap: wrap;
+  width: 481rpx;
+  height: 481rpx;
+}
+
+.image4{
+  margin-top: 10rpx;
+  margin-left: 6rpx;
+  margin-right: 6rpx;
+  width: 47%;
+  height: 47%;
+}
+
+.images5{
+  display: flex;
+  flex-wrap: wrap;
+  width: 519rpx;
+  height: 519rpx;
+}
+
+.image5{
+  width: 31%;
+  height: 31%; 
+  margin: 5rpx;
+}
+
+.LM{
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.like{
+  width: 48rpx;
+  height: 48rpx;
+  
+}
+
+.likee{
+  width: 58rpx;
+  height: 58rpx;
+}
+
+@font-face{
+  font-family: "Type";
+  src: url('https://zf.sc.chinaz.com/Files/DownLoad/upload/2023/0911/alimamafangyuanti.ttf'); 
+}
+
+.IPtext{
+  font-family: 'Type';
+}
+
+.activityfont{
+  display: flex;
+  justify-content:center;
+  width: 600rpx;
+  font-size: 75rpx;
+  border: 2rpx black solid;
+  border-radius: 20rpx;
+  padding: 15rpx;
+  margin-bottom: 20rpx;
+  color: black;
+}

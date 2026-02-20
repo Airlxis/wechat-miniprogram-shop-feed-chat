@@ -1,0 +1,64 @@
+<!--pages/GoodDetail/GoodDetail.wxml-->
+
+<!--顶部导航栏-->
+<text style="position: fixed;margin-right: auto;margin-top: 110rpx;z-index: 1;" bind:tap="NavigateBack">返回</text>
+<view style="width: 100%;height: 180rpx;display: flex;;justify-content: center;background-color: rgb(255, 255, 255);align-items: center;position: fixed;">
+  <text style="margin-top: 70rpx;font-size: 40rpx;">商品详情</text>
+</view>
+
+
+<!--用户-->
+<view style="margin-top: 180rpx;" class="UserContainer" bind:tap="ToOther" data-openid="{{OtherOpenid}}">
+  <image class="ProfilePhoto" mode="aspectFill" src="{{MasterAvatarUrl}}"></image>
+  <text style="font-size: 17px;margin-left: 10px;">{{MasterNickName}}</text>
+</view>
+
+<view style="display: flex;align-items: center;">
+  <text style="font-size: 38rpx;color: rgb(224, 134, 82);font-weight: 900;margin-top: 52rpx;margin-left: 29rpx;">￥</text>
+  <text style="font-size: 58rpx;color: rgb(224, 134, 82);font-weight: 900;margin-top: 38rpx;">{{Price}}</text>
+</view>
+
+<!--图片-->
+<swiper class="ImageContainer"  indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+ <block wx:for="{{MoreImageFileID}}" wx:key="id">
+   <swiper-item>
+     <image show-menu-by-longpress="true" src="{{item}}" class="slide-image" mode="aspectFit"/>
+   </swiper-item>
+ </block>
+</swiper>
+
+<scroll-view  wx:if="{{OtherOpenid !== Myopenid}}" scroll-y="true" style="height: 577rpx;">
+  <view style="display:flex;justify-content: center;margin-top: 38rpx;">
+    <textarea value="{{DetailIntroduction}}" disabled="true" style="font-size: 38rpx;"></textarea>
+  </view>
+</scroll-view>
+
+<scroll-view wx:if="{{OtherOpenid === Myopenid}}" scroll-y="true" style="height: 673rpx;">
+  <view style="display:flex;justify-content: center;margin-top: 38rpx;">
+    <textarea value="{{DetailIntroduction}}" disabled="true" style="font-size: 38rpx;"></textarea>
+  </view>
+</scroll-view>
+
+<view>
+  <button  wx:if="{{OtherOpenid !== Myopenid}}" style="background-color: yellow;" bind:tap="GotoNegotiation">我想要</button>
+</view>
+
+<!--留言-->
+<view class="LeaveMessage">
+  <image wx:if="{{IfWant === true}}" bind:tap="NotWant" src="/images/已收藏.png" style="width: 77rpx;height: 77rpx;"></image>
+  <image wx:if="{{IfWant === false}}" bind:tap="Want" src="/images/未收藏.png" style="width: 77rpx;height: 77rpx;"></image>
+  <input value="{{inputValue}}" class="input" placeholder="说点什么...."  bindinput="input"  />
+  <button class="send" size="mini" bind:tap="LeaveMessage">发送</button>
+</view>
+<view class="message-box">
+<block wx:for="{{HandeledMessages}}" wx:key="id" >
+  <view class="message">
+    <image class="avatar" src="{{item.avatarUrl}}"></image>
+    <view class="content">
+      <text class="nickname">{{item.nickName}}</text>
+      <text class="message">{{item.content}}</text>
+    </view>
+    <text class="time">{{item.time}}</text>
+  </view>
+</block>
+</view>

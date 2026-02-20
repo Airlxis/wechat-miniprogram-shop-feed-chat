@@ -1,0 +1,50 @@
+/* pages/Register/Register.wxss */
+.container{
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 513rpx;
+}
+
+.text{
+  font-size: 96rpx; 
+ text-align: center; 
+}
+
+.phonenumberContainer{
+  display: flex;
+  flex-direction: row;
+}
+
+.CodeButton{
+  height: 96rpx;
+}
+
+.input{
+  height: 96rpx;
+}
+
+
+
+.RegisterButton{
+  height: 153rpx;
+  width: 576rpx;
+}
+
+.agrement{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Agrementtext{
+  color: red; 
+ text-decoration: underline; 
+}
+
+.button{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

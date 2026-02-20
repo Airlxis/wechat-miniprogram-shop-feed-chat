@@ -1,0 +1,41 @@
+<!--pages/LogIn/LogIn.wxml-->
+
+<!--顶部导航栏-->
+<view style="height: 180rpx;display: flex;justify-content: center;background-color: rgb(255, 255, 255);">
+  <text style="margin-top: 100rpx;font-size: 40rpx;"></text>
+</view>
+
+
+<view style="background-color: rgb(255, 255, 255);height: 1442rpx;">
+
+<view style="align-items: center;display: flex;flex-direction: row;justify-content: center;">
+  <image style="margin: 77rpx;width: 400rpx;" src="/images/谷饲.png" 
+mode="aspectFit"></image>
+</view>
+
+<text></text>
+
+<view style="justify-content: center;display: flex;margin-bottom: 19rpx;">
+  <view style="padding-top: 19rpx;height: 96rpx;background-color:rgb(78,207,66);width: 345rpx;display: flex;flex-direction: row; border-radius: 48rpx;">
+     <button open-type="getUserInfo" class="button" bind:tap="WxLogin">微信一键登录</button>
+  </view>
+</view>
+
+<view style="justify-content: center;display: flex;">
+  <view style="padding-top: 19rpx;background-color:rgb(247,216,81);height: 96rpx;width: 346rpx;display: flex;flex-direction: row; border-radius: 48rpx;">
+     <button class="button"  bind:tap="AccountNumberLogin">账号密码登录</button>
+  </view>
+</view>
+    
+
+<view style="justify-content: center;display: flex;margin-top: 96rpx;">
+  <view style="padding-top: 19rpx;height: 50px;background-color: orange;width: 346rpx;display: flex;flex-direction: row; border-radius: 48rpx;">
+     <button class="button"  bind:tap="toRegister">注册账号</button>
+  </view>
+</view>
+
+
+
+
+
+</view>

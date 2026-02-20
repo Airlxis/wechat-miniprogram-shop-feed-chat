@@ -1,0 +1,14 @@
+<!--pages/AccountNumberLogin/AccountNumberLogin.wxml-->
+<view class="container">
+<text  class="text"   >账号登录</text>
+</view>
+
+<view class="inputcontainer">
+  <input type="text"   placeholder="请输入账号"     bindinput="inputAccount"    class="input" />
+  <view class="button">
+   <input type="text" password="{{isPasswordHidden}}"  placeholder="请输入密码"     bindinput="inputPassword"    class="input" />
+   <text size="mini" bindtap="change">{{isPasswordHidden ? '隐藏' : '显示'}}</text>
+  </view>
+</view>
+
+<button bind:tap="Login">登录</button>

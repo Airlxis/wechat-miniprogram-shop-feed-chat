@@ -1,0 +1,154 @@
+<!--pages/square/square.wxml-->
+
+<!--顶部导航栏-->
+<view style="height: 180rpx;display: flex;justify-content: center;background-color: rgb(255, 255, 255);">
+  <text style="margin-top: 100rpx;font-size: 40rpx;">广场</text>
+</view>
+
+<!--主要内容-->
+<view style="background-color: #EFEDEA;">
+
+<view class="navbar">
+  <text style="font-size:55rpx;background-color: #ed8a44;color: white;font-weight: 1000;border-radius: 20rpx;border: 3rpx solid black;padding-left: 30rpx;padding-right: 30rpx;padding-top: 20rpx;padding-bottom:20rpx ;" bindtap="changeContent" data-index="0">动态广场</text>
+  <text style="font-size:55rpx;background-color: #ed8a44;color: white;font-weight: 1000;border-radius: 20rpx;border: 3rpx solid black;;padding-left: 30rpx;padding-right: 30rpx;padding-top: 20rpx;padding-bottom:20rpx " bindtap="changeContent" data-index="1">发现同好</text>
+</view>
+
+
+<swiper class="swiper" bindchange="changeswip" current="{{currentContentIndex}}">
+
+  <!--动态广场-->
+  <swiper-item >
+    <scroll-view id="MomentScrollView" scroll-top="{{scrollTop}}" scroll-y="true" style="height: 1100rpx;" bindscrolltolower="loadMore" refresher-enabled="true" bindrefresherrefresh="PullRefresh" refresher-triggered="{{istriggered}}" >
+
+      <input class="input1" placeholder="请输入搜索内容" bindinput="SearchMoment"/>
+      
+      <!--未进行搜索-->
+      <view wx:if="{{InputContent.length === 0}}">
+
+        <view wx:for="{{Moments}}" wx:for-index="index" wx:key="id" data-index="{{item}}" bind:tap="ToMomentDetail">
+          <view style="display: flex;flex-direction: column;justify-content: center;margin: 40rpx;margin-bottom: 75rpx;">
+            <view style="justify-content: center;display: flex;">
+              <image src="{{item.ImageFileIDs[0]}}" style="height: 350rpx;width: 600rpx;border-radius: 20rpx;" mode="aspectFill">                  
+              </image>
+            </view>
+
+            <view style="display: flex;margin-top: 10rpx;align-items: center;">
+              <text style="margin-left: 40rpx;">{{item.Tag}}</text>
+              <view class="LM" >
+                <image  data-index="{{item._id}}" class="like" wx:if="{{item.liked}}" src="/images/社交-点赞.png"></image>
+                <image  data-index="{{item._id}}" class="like" wx:if="{{!item.liked}}" src="/images/未赞.png"></image>
+                <text style="margin-right: 34rpx;margin-left: 10rpx;">{{item.LikeNumber}}</text>
+                <image  data-index="{{item._id}}" class="likee" src="/images/评论.png"></image>
+                <text style="margin-left:10rpx;">{{item.CommentNumber}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!--已搜索-->
+      <view class="Container" wx:else="">
+        <view wx:for="{{FilteredInput}}" wx:for-index="index" wx:key="id" data-index="{{item}}"     bind:tap="ToMomentDetail">
+          <view style="display: flex;flex-direction: column;justify-content: center;margin: 40rpx;margin-bottom: 75rpx;">
+            <view style="justify-content: center;display: flex;">
+              <image src="{{item.ImageFileIDs[0]}}" style="height: 350rpx;width: 600rpx;border-radius: 20rpx;" mode="aspectFill">                  
+              </image>
+            </view>
+
+            <view style="display: flex;margin-top: 10rpx;align-items: center;">
+              <text style="margin-left: 40rpx;">{{item.Tag}}</text>
+              <view class="LM" >
+                <image  data-index="{{item._id}}" class="like" wx:if="{{item.liked}}" src="/images/社交-点赞.png"></image>
+                <image  data-index="{{item._id}}" class="like" wx:if="{{!item.liked}}" src="cloud://s-6gj66i67d89df4ed.732d-s-6gj66i67d89df4ed-1327638085/未赞.png"></image>
+                <text style="margin-right: 34rpx;margin-left: 10rpx;">{{item.LikeNumber}}</text>
+                <image  data-index="{{item._id}}" class="likee" src="cloud://s-6gj66i67d89df4ed.732d-s-6gj66i67d89df4ed-1327638085/社交-对话框2.png"></image>
+                <text style="margin-left:10rpx;">{{item.CommentNumber}}</text>
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+  <!--发现同好-->
+  <swiper-item >
+    <view style="display:flex;flex-direction: column;align-items: center;margin-top: 100rpx;">
+      <view class="activityfont" bind:tap="GoToTag" data-index="灌水闲聊">
+        <text>灌水闲聊</text>
+      </view>
+      <view  class="activityfont" bind:tap="GoToTag" data-index="cos搭子">
+        <text>cos搭子</text>
+      </view>  
+      <view  class="activityfont" bind:tap="GoToTag" data-index="一起逛展">
+        <text>一起逛展</text>
+      </view>  
+      <view  class="activityfont" bind:tap="GoToTag" data-index="同人交流"> 
+        <text>同人交流</text>
+      </view>   
+    </view>
+  </swiper-item>
+
+
+
+</swiper>
+
+
+</view>
+
+<!--编辑和发送动态-->
+<view style="position: fixed;bottom: 150rpx;height: auto;background-color: white;" wx:if="{{currentContentIndex === '0'}}">
+  <view style="display: flex;">
+    <textarea style="background-color: rgb(216, 214, 214);border-radius: 10rpx;font-size: 45rpx;" auto-height="true" placeholder="发个动态" bindinput="input" value="{{Text}}" ></textarea>
+    <text style="font-size: 35rpx;margin-left: 30rpx;width: 70rpx;" bindtap="ChooseImage">图片</text>
+    <text style="font-size: 35rpx;margin-left: 30rpx;width: 70rpx;" bind:tap="ShowTagChoosing">发送</text>
+  </view>
+
+  <view style="display: flex;flex-wrap: wrap;">
+    <view wx:for="{{ImagePaths}}" wx:key="id" >
+      <image src="{{item}}" style="width: 150rpx;height: 150rpx;" mode="aspectFit"></image>
+    </view>
+  </view>  
+</view>
+<!--选择标签-->
+<view wx:if="{{TagChoosing}}" style="position: fixed;align-self: center;top: 300rpx;">
+  <view style="background-color: rgb(243, 243, 243);width: 400rpx;height: 550rpx;border-radius: 10%;border:#ed8a44 5rpx solid;display: flex; flex-direction: column;align-items: center;">
+    <text style="margin-top: 40rpx;margin-bottom: 30rpx;color: #ed8a44;font-weight: 1000;font-size: 35rpx;">选择话题</text>
+    <view wx:for="{{Tag}}" wx:key="id" style="margin: 10rpx;background-color: {{item.checked ? '#ed8a44' : 'transparent'}};padding: 5rpx;border-radius: 10rpx;" bind:tap="ChooseTag" data-index="{{item.value}}"> 
+      <text style="font-size: 40rpx;color: {{item.checked ? 'white' : 'black'}};">{{item.value}}</text>
+    </view>
+    <text style="border-radius: 15rpx;border:#ed8a44 5rpx solid;color: #ed8a44;font-weight: 500;font-size: 35rpx;padding-left: 15rpx;padding-right:15rpx;padding-right:10rpx;padding-left: 10rpx;margin-top: 20rpx;" bind:tap="StartSend">确认</text>
+  </view>  
+</view>
+
+
+
+
+<!--导航栏-->
+<view style="position: fixed;bottom: 0rpx;background-color: white;width: 100%;height: 150rpx;">
+<view style="display: flex;justify-content: space-around;">
+  <view style="display: flex;flex-direction: column;align-items: center;" bind:tap="ToShopping">
+    <image src="/images/商城.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text>商城</text>
+  </view>
+  
+  <view style="display: flex;flex-direction: column;align-items: center;" >
+    <image src="/images/广场.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text>广场</text>
+  </view>
+
+  <view style="display: flex;flex-direction: column;align-items: center;" bind:tap="ToMessage">
+    <image src="/images/消息.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text wx:if="{{GlobalUnread === 0}}">消息</text>
+    <view wx:if="{{GlobalUnread !== 0}}" style="display: flex;justify-content: center;background-color: red;width: 40rpx;border-radius: 50%;">
+      <text  style="color: white;">{{GlobalUnread}}</text>
+    </view>  
+  </view>
+
+  <view style="display: flex;flex-direction: column;align-items: center;" bind:tap="ToMine">
+    <image src="/images/我的.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text>我的</text>
+  </view>
+</view>
+</view>

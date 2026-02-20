@@ -1,0 +1,27 @@
+/* pages/TagDetail/TagDetail.wxss */
+.input1{
+  height: 77rpx;
+  background-color: rgb(216, 214, 214);
+  width: 65%;
+  margin-left: auto;
+  margin-right: 19rpx;
+  margin-top: 19rpx;
+  margin-bottom:19rpx ;
+}
+
+.LM{
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.like{
+  width: 48rpx;
+  height: 48rpx;
+  
+}
+
+.likee{
+  width: 58rpx;
+  height: 58rpx;
+}

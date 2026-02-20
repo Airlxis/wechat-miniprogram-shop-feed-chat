@@ -1,0 +1,26 @@
+<!--pages/Loading/Loading.wxml-->
+
+<!--顶部导航栏-->
+<view style="height: 180rpx;display: flex;justify-content: center;background-color: rgb(255, 255, 255);">
+  <text style="margin-top: 100rpx;font-size: 40rpx;"></text>
+</view>
+
+
+<video 
+controls="{{false}}"
+autoplay="true"
+show-progress	="false"
+show-fullscreen-btn="false"
+show-play-btn	= "false"
+show-center-play-btn	= "false"
+enable-progress-gesture	="false"
+object-fit	="fill"
+show-bottom-progress	= "false"
+enable-progress-gesture="false"
+picture-in-picture-show-progress	="false"
+src="cloud://s-6gj66i67d89df4ed.732d-s-6gj66i67d89df4ed-1327638085/欢迎来到谷饲.mp4"
+style="height: 1440rpx;width: 100%;"
+bindended="end"
+>
+
+</video>

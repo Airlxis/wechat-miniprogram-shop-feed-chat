@@ -1,0 +1,61 @@
+<!--pages/TagDetail/TagDetail.wxml-->
+
+<!--顶部导航栏-->
+<text style="position: fixed;margin-right: auto;margin-top: 110rpx;z-index: 1;" bind:tap="NavigateBack">返回</text>
+<view style="width: 100%;height: 180rpx;display: flex;;justify-content: center;background-color: rgb(255, 255, 255);align-items: center;position: fixed;">
+  <text style="margin-top: 70rpx;font-size: 40rpx;">Tag详情</text>
+</view>
+
+<!--输入框-->
+<input style="margin-top: 180rpx;" class="input1" placeholder="请输入搜索内容" bindinput="SearchMoment"/>
+
+<scroll-view id="MomentScrollView" scroll-top="{{scrollTop}}" scroll-y="true" style="height: 1350rpx;" bindscrolltolower="loadMore" refresher-enabled="true" bindrefresherrefresh="PullRefresh" refresher-triggered="{{istriggered}}" >
+
+  <!--未进行搜索-->
+  <view wx:if="{{InputContent.length === 0}}">
+
+    <view wx:for="{{Moments}}" wx:for-index="index" wx:key="id" data-index="{{item}}" bind:tap="ToMomentDetail">
+      <view style="display: flex;flex-direction: column;justify-content: center;margin: 40rpx;margin-bottom: 75rpx;">
+        <view style="justify-content: center;display: flex;">
+          <image src="{{item.ImageFileIDs[0]}}" style="height: 350rpx;width: 600rpx;border-radius: 20rpx;" mode="aspectFill">                  
+          </image>
+        </view>
+
+        <view style="display: flex;margin-top: 10rpx;align-items: center;">
+          <text style="margin-left: 40rpx;">{{item.Tag}}</text>
+          <view class="LM" >
+            <image  data-index="{{item._id}}" class="like" wx:if="{{item.liked}}" src="/images/社交-点赞.png"></image>
+            <image  data-index="{{item._id}}" class="like" wx:if="{{!item.liked}}" src="/images/未赞.png"></image>
+            <text style="margin-right: 34rpx;margin-left: 10rpx;">{{item.LikeNumber}}</text>
+            <image  data-index="{{item._id}}" class="likee" src="/images/评论.png"></image>
+            <text style="margin-left:10rpx;">{{item.CommentNumber}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--已搜索-->
+  <view class="Container" wx:else="">
+    <view wx:for="{{FilteredInput}}" wx:for-index="index" wx:key="id" data-index="{{item}}"     bind:tap="ToMomentDetail">
+      <view style="display: flex;flex-direction: column;justify-content: center;margin: 40rpx;margin-bottom: 75rpx;">
+        <view style="justify-content: center;display: flex;">
+          <image src="{{item.ImageFileIDs[0]}}" style="height: 350rpx;width: 600rpx;border-radius: 20rpx;" mode="aspectFill">                  
+          </image>
+        </view>
+
+        <view style="display: flex;margin-top: 10rpx;align-items: center;">
+          <text style="margin-left: 40rpx;">{{item.Tag}}</text>
+          <view class="LM" >
+            <image  data-index="{{item._id}}" class="like" wx:if="{{item.liked}}" src="/images/社交-点赞.png"></image>
+            <image  data-index="{{item._id}}" class="like" wx:if="{{!item.liked}}" src="/images/未赞.png"></image>
+            <text style="margin-right: 34rpx;margin-left: 10rpx;">{{item.LikeNumber}}</text>
+            <image  data-index="{{item._id}}" class="likee" src="/images/评论.png"></image>
+            <text style="margin-left:10rpx;">{{item.CommentNumber}}</text>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+</scroll-view>

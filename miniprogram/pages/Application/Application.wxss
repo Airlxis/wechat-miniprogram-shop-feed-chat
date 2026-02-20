@@ -1,0 +1,76 @@
+/* pages/Application/Application.wxss */
+.goodsform{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 19rpx;
+}
+
+.singlegood{
+  width: 47%; /* 留出一点间隙，避免在某些屏幕上溢出 */
+  margin: 0 1.5% 19rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+
+ .picture{
+  margin: 19rpx;
+  width: 100%;
+}
+
+.LM{
+  display: flex;
+  align-items: center;
+  margin-left: -200rpx;
+  margin-bottom: -410rpx;
+  z-index: 2;
+}
+
+.like{
+  width: 48rpx;
+  height: 48rpx;
+  
+}
+
+.likee{
+  width: 58rpx;
+  height: 58rpx;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  }
+
+.checked{
+  font-size: 55rpx;
+  color: white;
+  border: white solid 6rpx;
+  background-color:#ed8a44 ;
+  padding: 20rpx;
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+  border-radius: 20rpx;
+}
+
+.nochecked{
+  font-size: 55rpx;
+  color: #ed8a44;
+  border: #ed8a44 solid 6rpx;
+  padding: 20rpx;
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+  border-radius: 20rpx;
+}
+
+.input{
+  height: 77rpx;
+  border: solid 4rpx black;
+  margin: 38rpx;
+  flex: 6;
+}
+
+.profile{
+  display: flex;
+  align-items: center;
+}

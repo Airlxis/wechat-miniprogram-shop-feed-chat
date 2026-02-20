@@ -1,0 +1,35 @@
+<!--pages/IPdetail/IPdetail.wxml-->
+
+<!--顶部导航栏-->
+<text style="position: fixed;margin-right: auto;margin-top: 110rpx;z-index: 2;" bind:tap="NavigateBack">返回</text>
+<view style="width: 100%;height: 180rpx;display: flex;;justify-content: center;background-color: rgb(255, 255, 255);align-items: center;position: fixed;z-index: 1;">
+  <text style="margin-top: 70rpx;font-size: 40rpx;">{{IP}}</text>
+</view>
+
+<!--上传群头像窗口-->
+<view wx:if="{{AddGroupPhoto === true}}" style="display: flex;justify-content: center;">
+  <view style="background-color: white;position: fixed;z-index: 1;margin-top: 192rpx;width: 577rpx;height: 769rpx;border-radius: 40rpx;">
+    <view style="display: flex;justify-content: center;margin-top: 38rpx;">
+      <text style="font-size: 58rpx;">上传群头像</text>
+    </view>
+    <view style="display: flex;justify-content: center;">
+      <image wx:if="{{avatarpath === ''}}" src="/images/+.png" style="width: 288rpx;height: 288rpx;margin:96rpx;" bind:tap="groupavatar"></image>
+      <image wx:if="{{avatarpath !==''}}" src="{{avatarpath}}" style="width: 288rpx;height: 288rpx;margin:96rpx;" mode="aspectFill" bind:tap="groupavatar"></image>
+    </view>  
+    <view style="display: flex;justify-content: space-around;">
+      <text style="font-size: 38rpx;" bind:tap="Cancel">取消</text>
+      <text style="font-size: 38rpx;" bind:tap="Confirm">确认</text>
+    </view>  
+  </view>
+</view>
+
+<button style="background-color: bisque;margin-top: 180rpx;" bind:tap="CreatNewGroup">+创建新群聊+</button>
+
+<view wx:for="{{ChatGroups}}" wx:key="id" >
+  <view style="height: 115rpx;position: relative;margin: 19rpx;align-items: center;display: flex;">
+    <image src="{{item.GroupAvatar}}" style="width: 115rpx;height: 115rpx;border-radius: 19rpx;" mode="aspectFill"></image>
+    <text style="height: 77rpx;margin-top: 35rpx;margin-left: 19rpx;">{{item.GroupName}}</text>
+    <text wx:if="{{item.IsIn}}" style="position: absolute;right: 0;top:38rpx">已加入</text>
+    <text wx:else="{{item.IsIn}}" style="position: absolute;right: 0;top:38rpx" bind:tap="JoinChatGroup" data-index="{{item.GroupID}}">点击加入</text>
+  </view>
+</view>

@@ -1,0 +1,78 @@
+<!--pages/AddGoods/AddGoods.wxml-->
+
+
+<!--顶部导航栏-->
+<text style="position: fixed;margin-right: auto;margin-top: 110rpx;z-index: 1;" bind:tap="NavigateBack">返回</text>
+<view style="width: 100%;height: 180rpx;display: flex;;justify-content: center;background-color: rgb(255, 255, 255);align-items: center;position: fixed;">
+  <text style="margin-top: 70rpx;font-size: 40rpx;">上架谷子</text>
+</view>
+
+<view style="margin-top: 180rpx;" class="MainContainer">
+ <text style="font-size: 38rpx;">选择商品封面</text>
+ <view class="Main-image-picker" bindtap="ChooseMainImage" wx:if="{{!MainImagePath}}">
+   <text class="Mainpicker-icon">+</text>
+ </view>
+ <image class="Main-selected-image" mode="aspectFit" src="{{MainImagePath}}" bindtap="ChooseMainImage" wx:if="{{MainImagePath}}"></image>
+</view>
+
+<view class="MoreContainer">
+<text style="font-size: 38rpx;">选择详情页面图片</text>
+ <view class="More-Image-picker" bindtap="ChooseMoreImage" wx:if="{{MoreImagePaths.length < 9}}">
+   <text class="More-picker-icon">+</text>
+ </view>
+ <view class="More-images-container">
+   <block wx:for="{{MoreImagePaths}}" wx:key="index">
+     <image class="More-selected-image" src="{{item}}" mode="aspectFit" bindtap="ChooseMoreImage" data-index="{{index}}"></image>
+   </block>
+ </view>
+</view>
+
+
+
+
+<view style="display: flex;justify-content: center;">
+<view class="search-container" >
+  <text style="font-size: 38rpx;margin-bottom: 38rpx;">选择所属IP</text>
+ <input type="text" placeholder="输入关键词以筛选下方IP选择表" bindinput="onSearchInput" />
+</view>
+</view>
+
+
+
+<picker mode="selector" range="{{filteredIPs}}"  bindchange="onIPpickerChange">
+  <view class="IPpicker">
+    选择IP：{{SelectedIP}}
+  </view>
+ </picker>
+
+
+<view class="TypePickerContainer">  
+ <text style="font-size: 38rpx;margin-bottom: 38rpx;">选择类型</text>
+ <picker mode="selector" range="{{AllType}}"  bindchange="onTpyePickerChange">
+   <view class="IPpicker">
+     当前选择：{{SelectedType}}
+   </view>
+ </picker>
+</view>
+
+<view style="display: flex;justify-content: center;flex-direction: column;">
+  <text style="font-size: 33rpx;margin-left: 10rpx;">标题（可通过搜索引擎搜索到你的商品）</text>
+  <view style="display: flex;flex-direction: column;align-items: center;">
+    <textarea  class="input" auto-height="true" confirm-type="done" placeholder="" bindinput="MainIntroduction" />
+  </view>
+  <text style="font-size: 33rpx;margin-left: 10rpx;">详细介绍</text>
+  <view style="display: flex;flex-direction: column;align-items: center;">
+    <textarea  class="input" auto-height="true" confirm-type="done" placeholder="" bindinput="DetailIntroduction" />
+  </view>  
+</view>
+
+
+<text style="font-size: 33rpx;margin-left: 10rpx;">价格</text>
+
+
+<input  class="input" type="number" placeholder="" bind:input="InputPrice" />
+
+<button size="default" style="background-color: rgb(245, 189, 120);margin-bottom: 40rpx;"  bind:tap="CheckMainImage">上传</button>
+
+
+

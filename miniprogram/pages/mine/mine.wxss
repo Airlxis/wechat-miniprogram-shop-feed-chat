@@ -1,0 +1,148 @@
+/* pages/mine/mine.wxss */
+.background{
+  width: 100%;
+  height: 385rpx;
+  
+}
+
+.profile{
+  display: flex;
+  align-items: center;
+  margin-left: 60rpx;
+  margin-top: -20rpx;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+
+  }
+  
+.UserContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+.avatar{
+    width: 115rpx;
+    height: 115rpx;
+  }
+  
+.nikeName{
+    font-size: large;
+    margin-right: 96rpx;
+  }
+  
+.swiper{
+  height: 1923rpx;
+}
+
+.view{
+  height: 1923rpx;
+
+}
+
+
+  
+  .image1{
+    width: 385rpx;
+    height: 385rpx;
+  }
+  
+  .image2{
+    width: 288rpx;
+    height: 288rpx;
+  }
+  
+  
+  .image3{
+    width: 192rpx;
+    height: 192rpx;
+  }
+  
+  .images4{
+    display: flex;
+    flex-wrap: wrap;
+    width: 481rpx;
+    height: 481rpx;
+  }
+  
+  .image4{
+    margin-top: 10rpx;
+    margin-left: 6rpx;
+    margin-right: 6rpx;
+    width: 47%;
+    height: 47%;
+  }
+  
+  .images5{
+    display: flex;
+    flex-wrap: wrap;
+    width: 240rpx;
+    height: 240rpx;
+  }
+  
+  .image5{
+    width: 33%;
+    height: 33%;
+    
+  }
+  
+  .LM{
+    display: flex;
+    align-items: center;
+    margin-right: 19rpx;
+    justify-content: flex-end;
+    margin-top: 20rpx;
+    margin-left: auto;
+  }
+  
+  .like{
+    width: 38rpx;
+    height: 38rpx;
+  }
+  
+  .likee{
+    width: 38rpx;
+    height: 38rpx;
+  }
+
+  .goodsform{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 19rpx;
+    justify-content: space-between;
+  }
+  
+  .singlegood{
+   width: 47%; /* 留出一点间隙，避免在某些屏幕上溢出 */
+   margin: 0 1.5% 19rpx;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: #494343;
+   box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+   border-radius: 9rpx;
+   transition: transform 0.3s ease;
+  }
+  
+  .picture{
+    margin: 19rpx;
+    width: 250rpx;
+    height: 250rpx;
+  }
+
+.LikingMoments{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 6rpx;
+  justify-content: space-between;
+}
+
+.SingleLikingMoments{
+  display: flex;
+  width:49%;
+  height: 385rpx;
+  align-items: center;
+}

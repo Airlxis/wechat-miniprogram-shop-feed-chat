@@ -1,0 +1,7 @@
+/* pages/AddGroup/AddGroup.wxss */
+.ManageIP{
+  display: flex;flex-wrap: wrap;justify-self: flex-start;
+}
+.IPText{
+  margin: 20rpx;
+}

@@ -1,0 +1,94 @@
+<!--pages/mine/mine.wxml-->
+<!--顶部导航栏-->
+<view style="width: 100%;height: 180rpx;display: flex;justify-content: center;background-color: rgb(255, 255, 255);position: fixed;z-index: 3;">
+  <text style="margin-top: 100rpx;font-size: 40rpx;">我的</text>
+</view>
+
+<view style="background-color: {{Day ? '#EFEDEA' : 'black'}};height: 1400rpx;margin-top: 180rpx;">
+
+
+<!--用户头像昵称等-->
+  <view style="margin-left: 630rpx">
+  <!--
+  <image wx:if="{{Day}}" src="/images/太阳.png" style="height: 60rpx;width: 60rpx;margin-left: auto;margin-right: 45rpx;margin-top: 20rpx;z-index:1" bind:tap="ChangeDayAndNight"></image>
+  <image wx:else="{{Day}}" src="/images/白太阳.png" style="height: 60rpx;width: 60rpx;margin-left: auto;margin-right: 45rpx;margin-top: 20rpx;z-index:1" bind:tap="ChangeDayAndNight"></image>
+-->
+  <image bind:tap="ToSettings" src="/images/设置.png" mode="aspectFill" style="width: 60rpx;height: 60rpx;margin-left: auto;margin-right: 45rpx;margin-top: 20rpx;z-index:1" ></image>
+  </view>
+
+  <view class="profile" >
+    <image class="avatar" style="width: 155rpx;height: 155rpx;border-radius: 50%;" src="{{avatarUrl}}" bind:tap="previewImage" mode="aspectFill"></image>
+    <view style="display: flex;flex-direction: column;">
+      <text style="margin-left: 20rpx;font-size: 45rpx;color: {{Day ? 'black' : 'white'}};">{{nickName}}</text>
+      <text style="margin-left: 20rpx;font-size: 35rpx;color: {{Day ? 'black' : 'white'}};">id: {{AccountNumber}}</text>
+    </view>
+  </view>
+
+
+<view style="display: flex;justify-content: space-around;;background-color: #ed8a44;border-radius: 20rpx;border: 3rpx solid black;margin: 40rpx;">
+  <text style="font-size:55rpx;background-color: #ed8a44;color: white;font-weight: 1000;padding-left: 30rpx;padding-right: 30rpx;padding-top: 20rpx;padding-bottom:20rpx ;" bind:tap="ToGoodsManagement">商品</text>
+  <text style="font-size:55rpx;background-color: #ed8a44;color: white;font-weight: 1000;;padding-left: 30rpx;padding-right: 30rpx;padding-top: 20rpx;padding-bottom:20rpx "  >动态</text>
+</view>
+
+
+<view style="margin-top: 150rpx;">
+  <text>商品管理</text>
+  <view style="display: flex;justify-content: space-around;">
+    <text bind:tap="ToMySelling" style="font-size:40rpx">正售</text>
+    <text bind:tap="ToMyWant" style="font-size:40rpx">想要</text>
+  </view>
+</view>
+
+<view style="margin-top: 40rpx;">
+  <text>动态管理</text>
+  <view style="display: flex;justify-content: space-around;">
+    <text bind:tap="ToMyMoments" style="font-size:40rpx">已发</text>
+    <text bind:tap="ToMyLiking" style="font-size:40rpx">点赞</text>
+  </view>
+</view>
+
+
+
+
+<view style="display: flex;justify-content: space-around;margin-top: 80rpx;">
+<!--
+  <view style="display: flex;flex-direction: column;align-items: center;">
+    <image src="/images/关注的话题.png" style="width: 100rpx;height: 100rpx;"></image>
+    <text>关注的话题</text>
+  </view>
+-->
+
+</view>
+
+
+</view>
+
+
+
+<!--导航栏-->
+<view style="position: fixed;bottom: 0rpx;background-color: white;width: 100%;height: 150rpx;">
+<view style="display: flex;justify-content: space-around;">
+  <view style="display: flex;flex-direction: column;align-items: center;" bind:tap="ToShopping">
+    <image src="/images/商城.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text>商城</text>
+  </view>
+  
+  <view style="display: flex;flex-direction: column;align-items: center;"  bind:tap="ToSquare">
+    <image src="/images/广场.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text>广场</text>
+  </view>
+
+  <view style="display: flex;flex-direction: column;align-items: center;" bind:tap="ToMessage">
+    <image src="/images/消息.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text wx:if="{{GlobalUnread === 0}}">消息</text>
+    <view wx:if="{{GlobalUnread !== 0}}" style="display: flex;justify-content: center;background-color: red;width: 40rpx;border-radius: 50%;">
+      <text  style="color: white;">{{GlobalUnread}}</text>
+    </view>  
+  </view>
+
+  <view style="display: flex;flex-direction: column;align-items: center;" >
+    <image src="/images/我的.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text>我的</text>
+  </view>
+</view>
+</view>

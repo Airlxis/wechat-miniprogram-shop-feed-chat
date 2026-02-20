@@ -1,0 +1,17 @@
+/* pages/MyLiking/MyLiking.wxss */
+.LM{
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.like{
+  width: 48rpx;
+  height: 48rpx;
+  
+}
+
+.likee{
+  width: 58rpx;
+  height: 58rpx;
+}

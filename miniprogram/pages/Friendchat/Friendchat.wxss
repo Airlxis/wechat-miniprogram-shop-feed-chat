@@ -1,0 +1,23 @@
+/* pages/Friendchat/Friendchat.wxss */
+.othermessage{
+  display: flex;
+  background-color: #eeeb37;
+  padding: 10rpx;
+  border-radius: 10rpx;
+  margin-left: -6rpx;
+  max-width: 450rpx;
+}
+
+.mymessage{
+  display: flex;
+  background-color: #20c82b;
+  padding: 10rpx;
+  border-radius: 10rpx;
+  margin-right: -8rpx;
+  font-size: 33rpx;
+  max-width: 450rpx;
+}
+
+.text-algin{
+  text-align: center;
+}

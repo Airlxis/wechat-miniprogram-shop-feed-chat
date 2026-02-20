@@ -1,0 +1,72 @@
+<!--pages/Friendchat/Friendchat.wxml-->
+
+<!--顶部导航栏-->
+<text style="position: fixed;margin-right: auto;margin-top: 110rpx;z-index: 3;" bind:tap="NavigateBack">返回</text>
+<view style="width: 100%;height: 180rpx;display: flex;;justify-content: center;background-color: rgb(255, 255, 255);align-items: center;position: fixed;z-index: 2;">
+  <text style="margin-top: 70rpx;font-size: 40rpx;">亲友</text>
+</view>
+
+<!---->
+<scroll-view scroll-y="true"  scroll-top="{{scrollTop}}" style="height: 1350rpx;margin-top: 180rpx;" bindscrolltoupper="AskForMoreHistory">
+<view style="display: flex;flex-direction: column-reverse;" class="scroll-view" class="scroll-view">
+
+
+  <view wx:for="{{Messages}}" wx:key="id" style="display: flex;flex-direction: column-reverse;margin: 10rpx;" >
+
+
+
+<view wx:if="{{ item.openid === MyOpenid}}" style="margin-left: auto;display: flex;flex-direction: column;" >
+    <view style="display: flex;margin-left: auto;height: auto;margin-right: 20rpx;">        
+      <view>
+        <view style="display:flex;justify-content: flex-end;margin-right: 20rpx;">
+          <text style="font-size: 30rpx;position: relative;top:-3rpx;">{{MyNickName}}</text>
+        </view>  
+        <view wx:if="{{item.Type === 'text'}}" style="display: flex;justify-content: flex-end;">
+          <textarea wx:if="{{item.BubbleWidth < 450}}" class="mymessage text-algin" auto-height="true"  value="{{item.Content}}" style="width: {{item.BubbleWidth}}rpx;" disabled="true"></textarea>
+          <textarea wx:if="{{item.BubbleWidth >= 450}}" class="mymessage" auto-height="true"  value="{{item.Content}}" style="width: {{item.BubbleWidth}}rpx;" disabled="true"></textarea>
+          <image  src="/images/气泡三角.png" style="width: 30rpx;height: 30rpx;margin-top: 14rpx;"> </image>
+        </view>
+        <view wx:if="{{item.Type === 'image'}}" style="display: flex;justify-content: flex-end;">
+          <image show-menu-by-longpress="true" wx:if="{{item.Type === 'image'}}" style="width: 300rpx;height: 300rpx;margin-right: 20rpx;" mode="aspectFill" src="{{item.Content}}" data-image="{{item.Content}}" bind:tap="previewImage"></image>
+        </view>
+      </view>
+
+      <image src="{{MyAvatarUrl}}" mode="aspectFill" style="height: 90rpx;width: 90rpx;border-radius: 20rpx;"></image>
+
+
+</view>
+
+</view>
+
+
+<view wx:if="{{ item.openid !== MyOpenid}}" style="margin-right: auto;" >
+      <view style="display: flex;" >
+        <image src="{{AnotherAvatarUrl}}" mode="aspectFill" style="height: 90rpx;width: 90rpx;border-radius: 20rpx;" bind:tap="ToOther" data-openid="{{item.openid}}"></image>
+        <view>
+          <text>{{AnotherNickName}}</text>
+          <view style="display: flex;">
+            <image wx:if="{{item.Type === 'text'}}" src="/images/气泡三角other.png" style="width: 30rpx;height: 30rpx;margin-top: 14rpx;"></image>
+            <textarea wx:if="{{item.BubbleWidth < 450}}" class="othermessage text-algin" auto-height="true"  value="{{item.Content}}" style="width: {{item.BubbleWidth}}rpx;" disabled="true"></textarea>
+            <textarea wx:if="{{item.BubbleWidth >= 450}}" class="othermessage" auto-height="true"  value="{{item.Content}}" style="width: {{item.BubbleWidth}}rpx;" disabled="true"></textarea>
+          </view>   
+          <image show-menu-by-longpress="true" wx:if="{{item.Type === 'image'}}" style="width: 300rpx;height: 300rpx;margin-right: 20rpx;" mode="aspectFill" src="{{item.Content}}" data-image="{{item.Content}}" bind:tap="previewImage"></image>
+        </view>  
+      </view>
+
+      
+    </view>
+
+  </view>
+</view>
+</scroll-view>
+
+
+<view style="display: flex; position: fixed; bottom: 10px; left:10px;z-index: 1;" >
+  <button style="background-color: bisque;flex: 1;" bind:tap="chooseMedia">图片</button>
+  <input style="border: black solid 2px;height: 70rpx;flex: 6;" bindinput="input" value="{{inputValue}}"></input>
+  <button style="background-color: bisque;flex: 1;" bind:tap="SendText">发送</button>
+</view>
+
+<view>
+<text style="font-size: 33rpx;visibility: hidden;" class="input">{{MessageToSend}}</text>
+</view>

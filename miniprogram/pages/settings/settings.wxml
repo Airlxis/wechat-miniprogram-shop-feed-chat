@@ -1,0 +1,74 @@
+<!--pages/settings/settings.wxml-->
+
+<!--顶部导航栏-->
+<text style="position: fixed;margin-right: auto;margin-top: 110rpx;z-index: 2;" bind:tap="NavigateBack">返回</text>
+<view style="width: 100%;height: 180rpx;display: flex;;justify-content: center;background-color: rgb(255, 255, 255);align-items: center;position: fixed;z-index: 1;">
+  <text style="margin-top: 70rpx;font-size: 40rpx;">设置</text>
+</view>
+
+<view wx:if="{{TochangeAvatar === true}}" style="display: flex;justify-content: center;margin-top: 180rpx;">
+  <view style="background-color: aquamarine;position: fixed;z-index: 1;margin-top: 192rpx;width: 577rpx;height: 769rpx;">
+    <view style="display: flex;justify-content: center;margin-top: 38rpx;">
+      <text style="font-size: 58rpx;">修改头像</text>
+    </view>
+    <view style="display: flex;justify-content: center;">
+      <image wx:if="{{avatarpath === ''}}" src="/images/+.png" style="width: 288rpx;height: 288rpx;margin:96rpx;" bind:tap="chooseavatar"></image>
+      <image wx:if="{{avatarpath !==''}}" src="{{avatarpath}}" style="width: 288rpx;height: 288rpx;margin:96rpx;" mode="aspectFill" bind:tap="chooseavatar"></image>
+    </view>  
+    <view style="display: flex;justify-content: center;">
+      <text style="font-size: 38rpx;" bind:tap="changeavatarurl">确认</text>
+    </view>  
+  </view>
+</view>
+
+<view wx:if="{{TochangeBackground === true}}" style="display: flex;justify-content: center;margin-top: 180rpx;">
+  <view style="background-color: aquamarine;position: fixed;z-index: 1;margin-top: 192rpx;width: 577rpx;height: 769rpx;">
+    <view style="display: flex;justify-content: center;margin-top: 38rpx;">
+      <text style="font-size: 58rpx;">修改主页背景</text>
+    </view>
+    <view style="display: flex;justify-content: center;">
+      <image wx:if="{{backgroundpath === ''}}" src="/images/+.png" style="width: 288rpx;height: 288rpx;margin:96rpx;" bind:tap="choosebackground"></image>
+      <image wx:if="{{backgroundpath !==''}}" src="{{backgroundpath}}" style="width: 288rpx;height: 288rpx;margin:96rpx;" mode="aspectFill" bind:tap="choosebackground"></image>
+    </view>  
+    <view style="display: flex;justify-content: center;">
+      <text style="font-size: 38rpx;" bind:tap="changebackgroundurl">确认</text>
+    </view>  
+  </view>
+</view>
+
+
+<text bind:tap="changenickname" style="margin-top: 180rpx;">
+  修改昵称
+</text>
+
+<text bind:tap="showchangeavatar">
+  修改头像
+</text>
+
+<text bind:tap="showchangebackground">
+  修改主页背景
+</text>
+
+<text>
+举报用户
+</text>
+
+<text>
+  意见反馈
+</text>
+
+<text bind:tap="Toprotocol">
+  用户隐私协议
+</text>
+
+<text bind:tap="ToAgrement">
+  社区公约
+</text>
+
+<text>
+  注销账户
+</text>
+
+<text>
+  退出登录
+</text>

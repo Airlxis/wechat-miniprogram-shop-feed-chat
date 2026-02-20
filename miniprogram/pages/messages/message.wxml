@@ -1,0 +1,178 @@
+<!--pages/messages/message.wxml-->
+
+<!--顶部导航栏-->
+<view style="width: 100%;height: 180rpx;display: flex;justify-content: center;background-color: rgb(255, 255, 255);position: fixed;">
+  <text style="margin-top: 100rpx;font-size: 40rpx;">消息</text>
+</view>
+
+<view style="background-color: #EFEDEA;margin-top: 180rpx;margin-bottom: 150rpx;">
+
+<view style="display: flex;justify-content: center;">
+  <text class="group"  style="background-color: {{index === 0 ? '#ed8a44' :'transparent' }};" bind:tap="changeindex0" >群聊</text>
+
+
+  <text class="private" style="background-color: {{index === 1 ? '#ed8a44' :'transparent' }};" bind:tap="changeindex1">亲友</text>
+
+
+  <text class="private" style="background-color: {{index === 2 ? '#ed8a44' :'transparent' }};" bind:tap="changeindex2">交易</text>
+</view>
+
+<!--搜索框和添加-->
+<view style="display: flex;align-items: center;justify-content: center;margin-top: -20rpx;">
+  <input class="input" placeholder=" 搜索......" bind:input="searchinput"></input>
+  <image style="height: 80rpx;width: 80rpx;margin-left: auto;margin-right: 20rpx;" src="/images/加号.png" bind:tap="showthe">
+  </image>
+    <view wx:if="{{show === true}}" style="display: flex;flex-direction: column;position: fixed;z-index: 2;right: 30rpx;top: 450rpx;background-color: rgba(14, 15, 15, 0.63);">
+      <text class="text" bind:tap="ToJoinGroup">加群聊</text>
+      <text class="text" bind:tap="ToAddFriend">加好友</text>
+    </view>  
+  </view>
+
+<!--群聊-->
+  <!--无搜索-->
+<view style="display: flex;flex-direction: column;"  wx:if="{{index === 0 && input === ''}}">
+  <view style="align-items: center;display: flex;margin-top: 20rpx;">
+    <view style="display: flex;flex-direction: column;">
+      <view wx:for="{{GroupList}}" wx:key="id" bind:tap="ToGroupChat" data-id="{{item.GroupID}}" style="display: flex;align-items: center;margin: 20rpx;width: 650rpx;">
+        <image src="{{item.GroupAvatar}}" style="width: 100rpx;height: 100rpx;border-radius: 20rpx;" mode="aspectFill"></image>
+        <text style="font-size: larger;margin: 10rpx;">{{item.GroupName}}</text>
+      </view>
+    </view>  
+    <view style="display: flex;flex-direction: column;margin-left: auto;">
+    <view wx:for="{{GroupUnread}}" wx:key="id" style="height: 100rpx;align-items: center;display: flex;margin:20rpx"> 
+      <text wx:if="{{item !== 0}}">{{item}}</text>
+    </view>
+  </view>
+  </view>
+</view>
+  <!--有搜索-->
+<view style="display: flex;flex-direction: column;"  wx:if="{{index === 0 && input !== ''}}">
+  <view style="align-items: center;display: flex;margin-top: 20rpx;">
+    <view style="display: flex;flex-direction: column;">
+      <view wx:for="{{FilterdGroupList}}" wx:key="id" bind:tap="ToGroupChat" data-id="{{item.GroupID}}" style="display: flex;align-items: center;margin: 20rpx;width: 650rpx;">
+        <image src="{{item.GroupAvatar}}" style="width: 100rpx;height: 100rpx;border-radius: 20rpx;" mode="aspectFill"></image>
+        <text style="font-size: larger;margin: 10rpx;">{{item.GroupName}}</text>
+      </view>
+    </view>  
+    <view style="display: flex;flex-direction: column;margin-left: auto;">
+    <view wx:for="{{FilterdGroupUnread}}" wx:key="id" style="height: 96rpx;align-items: center;display: flex;margin:20rpx"> 
+      <text wx:if="{{item !== 0}}">{{item}}</text>
+    </view>
+  </view>
+  </view>
+</view>
+
+<!--亲友-->
+  <!--无搜索-->
+<view style="display: flex;flex-direction: column;" wx:if="{{index === 1 && input === ''}}">
+
+<view style="align-items: center;display: flex;margin-top: 20rpx;">
+  <view style="display: flex;flex-direction: column;">
+    <view wx:for="{{Friends}}" wx:key="id" bind:tap="ToFriendChat" data-openid="{{item.openid}}" >
+      <view class="profile" style="margin:20rpx">
+        <image src="{{item.avatarUrl}}" class="avatar" mode="aspectFill"></image>
+        <text class="name" style="margin:20rpx">{{item.nickName}}</text>
+      </view>
+    </view>
+  </view>
+  <view style="display: flex;flex-direction: column;margin-left: auto;">
+    <view wx:for="{{FriendsUnread}}" wx:key="id" style="height: 96rpx;align-items: center;display: flex;margin:20rpx"> 
+      <text wx:if="{{item !== 0}}">{{item}}</text>
+    </view>
+  </view>
+</view>
+
+</view>
+  <!--有搜索-->
+<view style="display: flex;flex-direction: column;" wx:if="{{index === 1 && input !== ''}}">
+
+<view style="align-items: center;display: flex;margin-top: 20rpx;">
+  <view style="display: flex;flex-direction: column;">
+    <view wx:for="{{FilterdFriends}}" wx:key="id" bind:tap="ToFriendChat" data-openid="{{item.openid}}" >
+      <view class="profile" style="margin:20rpx">
+        <image src="{{item.avatarUrl}}" class="avatar" mode="aspectFill"></image>
+        <text class="name" style="margin:20rpx">{{item.nickName}}</text>
+      </view>
+    </view>
+  </view>
+  <view style="display: flex;flex-direction: column;margin-left: auto;">
+    <view wx:for="{{FilterdFriendsUnread}}" wx:key="id" style="height: 96rpx;align-items: center;display: flex;margin:20rpx"> 
+      <text wx:if="{{item !== 0}}">{{item}}</text>
+    </view>
+  </view>
+</view>
+
+</view>
+
+<!--交易-->
+  <!--无搜索-->
+<view style="display: flex;flex-direction: column;" wx:if="{{index === 2 && input === ''}}">
+
+<view style="align-items: center;display: flex;margin-top: 20rpx;">
+  <view style="display: flex;flex-direction: column;">
+    <view wx:for="{{Bargainers}}" wx:key="id" bind:tap="ToBargainerChat" data-openid="{{item.openid}}" >
+      <view class="profile" style="margin:20rpx">
+        <image src="{{item.avatarUrl}}" class="avatar" mode="aspectFill"></image>
+        <text class="name" style="margin:20rpx">{{item.nickName}}</text>
+      </view>
+    </view>
+  </view>
+  <view style="display: flex;flex-direction: column;margin-left: auto;">
+    <view wx:for="{{BargainersUnread}}" wx:key="id" style="height: 96rpx;align-items: center;display: flex;margin:20rpx"> 
+      <text wx:if="{{item !== 0}}">{{item}}</text>
+    </view>
+  </view>
+</view>
+
+</view>  
+  <!--有搜索-->
+<view style="display: flex;flex-direction: column;" wx:if="{{index === 2 && input !== ''}}">
+
+<view style="align-items: center;display: flex;margin-top: 20rpx;">
+  <view style="display: flex;flex-direction: column;">
+    <view wx:for="{{FilterdBargainers}}" wx:key="id" bind:tap="ToBargainerChat" data-openid="{{item.openid}}" >
+      <view class="profile" style="margin:20rpx">
+        <image src="{{item.avatarUrl}}" class="avatar" mode="aspectFill"></image>
+        <text class="name" style="margin:20rpx">{{item.nickName}}</text>
+      </view>
+    </view>
+  </view>
+  <view style="display: flex;flex-direction: column;margin-left: auto;">
+    <view wx:for="{{FilterdBargainersUnread}}" wx:key="id" style="height: 96rpx;align-items: center;display: flex;margin:20rpx"> 
+      <text wx:if="{{item !== 0}}">{{item}}</text>
+    </view>
+  </view>
+</view>
+
+</view>  
+
+</view>
+
+
+<!--导航栏-->
+<view style="position: fixed;bottom: 0rpx;background-color: white;width: 100%;height: 150rpx;">
+<view style="display: flex;justify-content: space-around;">
+  <view style="display: flex;flex-direction: column;align-items: center;" bind:tap="ToShopping">
+    <image src="/images/商城.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text>商城</text>
+  </view>
+  
+  <view style="display: flex;flex-direction: column;align-items: center;"  bind:tap="ToSquare">
+    <image src="/images/广场.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text>广场</text>
+  </view>
+
+  <view style="display: flex;flex-direction: column;align-items: center;" >
+    <image src="/images/消息.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text wx:if="{{GlobalUnread === 0}}">消息</text>
+    <view wx:if="{{GlobalUnread !== 0}}" style="display: flex;justify-content: center;background-color: red;width: 40rpx;border-radius: 50%;">
+      <text  style="color: white;">{{GlobalUnread}}</text>
+    </view>  
+  </view>
+
+  <view style="display: flex;flex-direction: column;align-items: center;" bind:tap="ToMine">
+    <image src="/images/我的.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text>我的</text>
+  </view>
+</view>
+</view>

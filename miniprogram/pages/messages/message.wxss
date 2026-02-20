@@ -1,0 +1,55 @@
+/* pages/messages/message.wxss */
+page{
+  background-color: #EFEDEA;
+}
+
+.yes{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 19rpx;
+  margin: 48rpx;
+  left: 67rpx;
+  top: -100rpx;
+  align-items: center;
+  margin-top: 481rpx;
+}
+
+.group{
+  border-radius: 38rpx;
+  padding: 38rpx;
+  font-size: 50rpx;
+  margin: 38rpx;
+}
+
+.private{
+  border-radius: 38rpx;
+
+  padding: 38rpx;
+  font-size: 50rpx;
+  margin: 38rpx;
+}
+
+.profile{
+  display: flex;
+  align-items: center;
+}
+
+.avatar{
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+}
+
+.text{
+  color: white;
+  font-size: 60rpx;
+}
+.input{
+  border: 2rpx solid rgb(146, 139, 139);
+  height: 60rpx;
+  width: 600rpx;
+  margin-left: 25rpx;
+  border-radius: 30rpx;
+}

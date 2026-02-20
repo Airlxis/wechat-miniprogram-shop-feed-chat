@@ -1,0 +1,33 @@
+<!--pages/MyMoment/MyMoment.wxml-->
+
+<!--顶部导航栏-->
+<text style="position: fixed;margin-right: auto;margin-top: 110rpx;z-index: 2;" bind:tap="NavigateBack">返回</text>
+<view style="width: 100%;height: 180rpx;display: flex;;justify-content: center;background-color: rgb(255, 255, 255);align-items: center;position: fixed;z-index: 1;">
+  <text style="margin-top: 70rpx;font-size: 40rpx;">动态</text>
+</view>
+
+<text style="margin-top: 180rpx;">长按可进行编辑</text>
+
+<view wx:for="{{Moments}}" wx:if="{{Moments.length !==0}}" wx:for-index="index" wx:key="id" data-index="{{item}}" bind:tap="ToMomentDetail" bind:longpress="Delete">
+  <view style="display: flex;flex-direction: column;justify-content: center;margin: 40rpx;margin-bottom: 75rpx;">
+    <view style="justify-content: center;display: flex;">
+      <image src="{{item.Image}}" style="height: 350rpx;width: 600rpx;border-radius: 20rpx;" mode="aspectFill">                  
+      </image>
+    </view>
+
+    <view style="display: flex;margin-top: 10rpx;align-items: center;">
+      <text style="margin-left: 40rpx;">{{item.Tag}}</text>
+      <view class="LM" >
+        <image  data-index="{{item._id}}" class="like" wx:if="{{item.liked}}" src="/images/社交-点赞.png"></image>
+        <image  data-index="{{item._id}}" class="like" wx:if="{{!item.liked}}" src="/images/未赞.png"></image>
+        <text style="margin-right: 34rpx;margin-left: 10rpx;">{{item.LikeNumber}}</text>
+        <image  data-index="{{item._id}}" class="likee" src="/images/评论.png"></image>
+        <text style="margin-left:10rpx;">{{item.CommentNumber}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{Moments.length === 0}}" style="display: flex;justify-content: center;margin-top: 140rpx;">
+  <text style="font-size: 60rpx;font-weight: 1000;">未发布动态</text>
+</view>

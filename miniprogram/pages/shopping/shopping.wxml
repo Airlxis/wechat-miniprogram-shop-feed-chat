@@ -1,0 +1,740 @@
+<!--顶部导航栏-->
+<view style="width: 100%;height: 180rpx;display: flex;justify-content: center;background-color: rgb(255, 255, 255);position: fixed;z-index: 2;">
+  <text style="margin-top: 100rpx;font-size: 40rpx;">商城</text>
+</view>
+
+<view style="background-color: {{Day ? '#EFEDEA' : 'black'}};margin-top: 180rpx;">
+
+<!--搜索框-->
+<view class="search-container">
+  <image src="{{avatar}}" style="height: 80rpx;width: 80rpx;margin-right: 10rpx;border-radius: 50%;" mode="aspectFill" ></image>
+  <input type="text" class="searchinput" placeholder="请输入搜索内容" bindinput="onSearchInput" bindconfirm="onsearch" adjust-position="{{false}}" hold-keyboard="{{true}}" cursor-spacing="150" />
+  <view style="display: flex;align-items: center;">
+    <text class="searchbutton" bind:tap="onsearch">搜索 </text>
+  </view>
+</view>
+<!--Type筛选框-->
+<view style="display: flex;justify-content: center;align-items: center;">
+<view class="TypeFilterContainer">
+  <checkbox-group class="group" bindchange="SelectType">
+   <label  wx:for="{{AllType}}" wx:key="id">
+    <checkbox class="TypeCheckBox0" value="{{item.name}}" checked="{{item.checked}}"/>
+    <view class="TypeCheckBox" style="padding: 4rpx;border-radius: 50%;;">
+      <view style="display: flex;flex-direction: column;align-items: center;">
+        <image src="{{item.icon}}" style="height: 100rpx;width: 100rpx; background-color: {{item.checked?'#ffe79f': 'transparent'}};border-radius: 50%;"></image>
+        <text class="TypeText">{{item.name}}</text>
+      </view>
+     </view>    
+   </label>
+  </checkbox-group>
+</view>
+</view>
+<!--IP筛选框展开-->
+<view style="display: flex;justify-content: center;align-items: center;">
+<view class="IPFilterContainer" style="  background-color: {{Day ? '#fcfbf4' : 'black'}};" wx:if="{{unfold}}" >
+  <checkbox-group class="group1" bindchange="SelectIP">
+   
+    <!--A-->
+   <view class="IProw">
+    <text>A</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{A}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+    </view> 
+    <!--B-->
+    <view class="IProw">
+    <text>B</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{B}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+   <!--C-->
+   <view class="IProw">
+    <text>C</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{C}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+  <!--D-->
+   <view class="IProw">
+    <text>D</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{D}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+  <!--E-->
+   <view class="IProw">
+    <text>E</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{E}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+  <!--F-->
+   <view class="IProw">
+    <text>F</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{F}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+  <!--G-->
+   <view class="IProw">
+    <text>G</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{G}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+   <!--H-->
+   <view class="IProw">
+    <text>H</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{H}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>   
+  <!--I-->
+   <view class="IProw">
+    <text>I</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{I}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>  
+   <!--J-->
+   <view class="IProw">
+    <text>J</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{J}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>   
+    <!--K-->
+    <view class="IProw">
+    <text>K</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{K}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>    
+  <!--L-->
+  <view class="IProw">
+    <text>L</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{L}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>    
+ <!--M-->
+ <view class="IProw">
+    <text>M</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{M}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>    
+ <!--N-->
+ <view class="IProw">
+    <text>N</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{N}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>   
+ <!--O-->
+   <view class="IProw">
+    <text>O</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{O}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>            
+ <!--P-->
+ <view class="IProw">
+    <text>P</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{P}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>      
+ <!--Q-->
+ <view class="IProw">
+    <text>Q</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{Q}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+ <!--R-->
+ <view class="IProw">
+    <text>R</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{R}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+   <!--S-->
+   <view class="IProw">
+    <text>S</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{S}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>   
+ <!--T-->
+ <view class="IProw">
+    <text>T</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{T}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>
+<!--U-->
+   <view class="IProw">
+    <text>U</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{U}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>
+<!--V-->
+  <view class="IProw">
+    <text>V</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{V}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>   
+ <!--W-->
+ <view class="IProw">
+    <text>W</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{W}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>  
+ <!--X-->
+ <view class="IProw">
+    <text>X</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{X}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>
+ <!--Y-->
+ <view class="IProw">
+    <text>Y</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{Y}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+ <!--Z-->
+ <view class="IProw">
+    <text>Z</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{Z}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>                                 
+  </checkbox-group>
+  <view class="button">
+    <button  bind:tap="Fold">收起</button>
+  </view>
+</view>
+</view>
+<!--IP筛选框收起-->
+<view style="display: flex;justify-content: center;align-items: center;">
+ <view class="IPFilterContainer" wx:if="{{!unfold}}">
+ <scroll-view class="scroll" scroll-y="true">
+  <checkbox-group class="group1" bindchange="SelectIP">
+        <!--A-->
+   <view class="IProw">
+    <text>A</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{A}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+    </view> 
+    <!--B-->
+    <view class="IProw">
+    <text>B</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{B}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+   <!--C-->
+   <view class="IProw">
+    <text>C</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{C}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+  <!--D-->
+   <view class="IProw">
+    <text>D</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{D}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+  <!--E-->
+   <view class="IProw">
+    <text>E</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{E}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+  <!--F-->
+   <view class="IProw">
+    <text>F</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{F}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+  <!--G-->
+   <view class="IProw">
+    <text>G</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{G}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+   <!--H-->
+   <view class="IProw">
+    <text>H</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{H}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>   
+  <!--I-->
+   <view class="IProw">
+    <text>I</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{I}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>  
+   <!--J-->
+   <view class="IProw">
+    <text>J</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{J}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>   
+    <!--K-->
+    <view class="IProw">
+    <text>K</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{K}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>    
+  <!--L-->
+  <view class="IProw">
+    <text>L</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{L}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>    
+ <!--M-->
+ <view class="IProw">
+    <text>M</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{M}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>    
+ <!--N-->
+ <view class="IProw">
+    <text>N</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{N}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>   
+ <!--O-->
+   <view class="IProw">
+    <text>O</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{O}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>            
+ <!--P-->
+ <view class="IProw">
+    <text>P</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{P}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>      
+ <!--Q-->
+ <view class="IProw">
+    <text>Q</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{Q}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+ <!--R-->
+ <view class="IProw">
+    <text>R</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{R}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+   <!--S-->
+   <view class="IProw">
+    <text>S</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{S}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>   
+ <!--T-->
+ <view class="IProw">
+    <text>T</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{T}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>
+<!--U-->
+   <view class="IProw">
+    <text>U</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{U}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>
+<!--V-->
+  <view class="IProw">
+    <text>V</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{V}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>   
+ <!--W-->
+ <view class="IProw">
+    <text>W</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{W}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>  
+ <!--X-->
+ <view class="IProw">
+    <text>X</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{X}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>
+ <!--Y-->
+ <view class="IProw">
+    <text>Y</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{Y}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view> 
+ <!--Z-->
+ <view class="IProw">
+    <text>Z</text>
+     <view  style="display: flex;flex-wrap: wrap;justify-self: flex-start;">
+      <label wx:for="{{Z}}" wx:key="id" >
+        <checkbox class="IPcheckbox0" value="{{item._id}}"  checked="{{item.checked}}" /> 
+          <view class="IPcheckbox" style="background-color: {{item.checked?'#ffe79f':'transparent'}};" >
+            <text  class="IPtext" style="color: {{item.checked?'#000000':'#434343'}};font-size: 16px;font-weight: 600;">{{item._id}}</text>
+          </view>
+        </label>
+      </view> 
+     </view>   
+  </checkbox-group>
+  </scroll-view>
+  <view class="button">
+    <button  bind:tap="UnFold" style="color: {{Day ? 'black' : '#ccc8c8'}};">展开</button>
+  </view>
+ </view>
+</view>
+
+<!--卖东西-->
+<view style="border-radius: 30rpx;display: flex;justify-content: space-around;">
+  <text bind:tap="ToAddGoods" style="font-family: 'Type';background-color: #ffe79f;color: #ef8430;border:#ef8430 4rpx solid;border-radius: 40rpx;margin-top: 40rpx;padding: 50rpx;font-size: 40rpx;" >我也要卖</text>
+  <text bind:tap="ApplyIP" style="font-family: 'Type';background-color: #ffe79f;color: #ef8430;border:#ef8430 4rpx solid;border-radius: 40rpx;margin-top: 40rpx;padding: 50rpx;font-size: 40rpx;" >申请新IP</text>
+</view>
+
+<!--输入框无内容-->
+<view class="goodsform" wx:if="{{FilteredInput.length === 0}}" style="padding-top: 100rpx;margin-top: -40rpx;margin-bottom: 150rpx;">
+  <view  class="singlegood"  wx:for="{{FilteredGoods}}"  wx:key="_id" data-id="{{item._id}}"  bindtap="goToGoodDetail" >
+    <view style="background-color: white;width: 100%;display: flex;justify-content: center;border-radius: 10rpx;box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);  transition: transform 0.3s ease;">
+      <image class="picture" mode="aspectFill" src="{{item.MainImageFileID}}"></image>
+    </view>  
+    <view style="display: flex;flex-direction: column;align-self: flex-start;">
+      <text>{{item.MainIntroduction}}</text>
+      <text style="font-size: 40rpx;">￥{{item.Price}}</text>
+    </view>
+  </view>
+
+ </view>
+<!--输入框有内容-->
+<view class="goodsform" wx:else style="margin-bottom: 150rpx;">
+  <view  class="singlegood"  wx:for="{{FilteredInput}}" wx:key="_id" data-id="{{item._id}}"  bindtap="goToGoodDetail" >
+    <view style="background-color: white;width: 100%;display: flex;justify-content: center;border-radius: 10rpx;box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);  transition: transform 0.3s ease;">
+      <image class="picture" mode="aspectFill" src="{{item.MainImageFileID}}"></image>
+    </view>  
+    <view style="display: flex;flex-direction: column;align-self: flex-start;">
+      <text>{{item.MainIntroduction}}</text>
+      <text style="font-size: 40rpx;">￥{{item.Price}}</text>
+    </view>
+  </view>
+</view>
+
+</view>
+
+<!--导航栏-->
+<view style="position: fixed;bottom: 0rpx;background-color: white;width: 100%;height: 150rpx;">
+<view style="display: flex;justify-content: space-around;">
+  <view style="display: flex;flex-direction: column;align-items: center;">
+    <image src="/images/商城.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text>商城</text>
+  </view>
+  
+  <view style="display: flex;flex-direction: column;align-items: center;" bind:tap="ToSquare">
+    <image src="/images/广场.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text>广场</text>
+  </view>
+
+  <view style="display: flex;flex-direction: column;align-items: center;" bind:tap="ToMessage">
+    <image src="/images/消息.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text wx:if="{{GlobalUnread === 0}}">消息</text>
+    <view wx:if="{{GlobalUnread !== 0}}" style="display: flex;justify-content: center;background-color: red;width: 40rpx;border-radius: 50%;">
+      <text  style="color: white;">{{GlobalUnread}}</text>
+    </view>  
+  </view>
+
+  <view style="display: flex;flex-direction: column;align-items: center;" bind:tap="ToMine">
+    <image src="/images/我的.png" style="height: 90rpx;width: 90rpx;" mode="aspectFill"></image>
+    <text>我的</text>
+  </view>
+</view>
+</view>

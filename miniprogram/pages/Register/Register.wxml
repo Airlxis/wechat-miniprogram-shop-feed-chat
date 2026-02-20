@@ -1,0 +1,35 @@
+<!--pages/Register/Register.wxml-->
+
+<view class="container">
+<text  class="text"   >注册账户</text>
+</view>
+
+<view class="inputcontainer">
+  <input type="text"   placeholder="请输入账号"     bindinput="inputAccount"    class="input" />
+  <view class="button">
+   <input type="text" password="{{isPasswordHidden1}}"  placeholder="请输入密码"     bindinput="inputPassword"    class="input" />
+   <text size="mini" bindtap="change1">{{isPasswordHidden1 ? '隐藏' : '显示'}}</text>
+  </view>
+  <view class="button">
+   <input type="text" password="{{isPasswordHidden2}}"  placeholder="请再次输入密码" bindinput="inputPassword2"   class="input" />
+   <text size="mini" bindtap="change2">{{isPasswordHidden2 ? '隐藏' : '显示'}}</text>
+  </view>
+</view>
+
+<view class="agrement">
+  <view>
+    <checkbox bind:tap="onAgreeChange" checked="{{hasAgreed}}"/>
+    <text>我同意以下协议</text>
+  </view>
+
+  <text bind:tap="SeeAgrement" class="Agrementtext" >《谷饲社区用户公约》</text>
+
+  <text bind:tap="Toprotocol" class="Agrementtext" >《谷饲（Goods）隐私及服务条例》</text>
+</view>
+
+<button open-type="getUserInfo" bindgetuserinfo="onGetUserProfile" class="RegisterButton">绑定微信账户信息并注册</button>
+
+
+
+
+

@@ -1,0 +1,85 @@
+<!--pages/other/other.wxml-->
+
+<!--顶部导航栏-->
+<text style="position: fixed;margin-right: auto;margin-top: 110rpx;z-index: 2;" bind:tap="NavigateBack">返回</text>
+<view style="width: 100%;height: 180rpx;display: flex;;justify-content: center;background-color: rgb(255, 255, 255);align-items: center;position: fixed;z-index: 1;">
+  <text style="margin-top: 70rpx;font-size: 40rpx;">他人主页</text>
+</view>
+
+<!--用户-->
+<view style="margin-top: 180rpx;" class="profile">
+  <image style="width: 155rpx;height: 155rpx;border-radius: 50%;margin: 50rpx;" src="{{avatarUrl}}"></image>
+  <view style="display: flex;flex-direction: column;">
+    <text style="font-size: 45rpx;">{{nickName}}</text>
+    <text style="font-size: 35rpx;">id: {{AccountNumber}}</text>
+  </view>
+  <view style="display: flex;flex-direction: column;margin-left: auto;align-items: center;">
+    <text wx:if="{{ISFriend === 'Friend'}}">是亲友</text>
+    <text wx:if="{{ISFriend === 'Applicated'}}">已申请</text>
+    <text wx:if="{{ISFriend === 'None'}}"  bind:tap="AddFriend">加亲友</text>
+    <text bind:tap="GotoNegotiation">交易</text>
+  </view>  
+</view>
+
+
+
+<view class="navbar" wx:if="{{currentContentIndex === '0'}}">
+ <text data-index="0" class="checked">商品</text>
+ <text bindtap="changeContent" data-index="1" class="nochecked">动态</text>
+</view>
+
+<view class="navbar" wx:if="{{currentContentIndex === '1'}}">
+ <text bindtap="changeContent" data-index="0" class="nochecked">商品</text>
+ <text data-index="1" class="checked">动态</text>
+</view>
+
+<swiper class="swiper" current="{{currentContentIndex}}">
+
+<!-- 商品 -->
+<swiper-item >
+
+  <scroll-view class="view" scroll-y="true">
+    <view wx:if="{{MyGoods.length !== 0}}" class="goodsform"  style="padding-top: 100rpx;margin-top: -40rpx;margin-bottom: 150rpx;">
+      <view  class="singlegood"  wx:for="{{MyGoods}}"  wx:key="_id" data-id="{{item._id}}"  bindtap="goToGoodDetail" >
+        <view style="background-color: white;width: 100%;display: flex;justify-content: center;border-radius: 10rpx;box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);  transition: transform 0.3s ease;">
+          <image class="picture" mode="aspectFill" src="{{item.MainImageFileID}}"></image>
+        </view>  
+        <view style="display: flex;flex-direction: column;align-self: flex-start;">
+          <text>{{item.MainIntroduction}}</text>
+          <text style="font-size: 40rpx;font-weight: 600;">￥{{item.Price}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:else style="display: flex;justify-content: center;margin-top: 140rpx;">
+      <text style="font-size: 60rpx;font-weight: 1000;">暂时还未发布内容</text>
+    </view>
+  </scroll-view>
+
+</swiper-item>
+
+<!-- 动态 -->
+<swiper-item>
+  <scroll-view class="view" scroll-y="true">
+    <view wx:if="{{MyMoments.length !==0}}" wx:for="{{MyMoments}}" wx:for-index="index" wx:key="id" data-index="{{item}}" bind:tap="ToMomentDetail">
+      <view style="display: flex;justify-content: center;margin: 40rpx;margin-bottom: 75rpx;">
+        <image src="{{item.ImageFileIDs[0]}}" style="height: 350rpx;width: 600rpx;border-radius: 20rpx;" mode="aspectFill">                  
+        </image>
+        <view class="LM" >
+          <image  data-index="{{item._id}}" class="like" wx:if="{{item.liked}}" src="cloud://s-6gj66i67d89df4ed.732d-s-6gj66i67d89df4ed-1327638085/社交-点赞.png"></image>
+          <image  data-index="{{item._id}}" class="like" wx:else="{{item.liked}}" src="cloud://s-6gj66i67d89df4ed.732d-s-6gj66i67d89df4ed-1327638085/未赞.png"></image>
+          <text style="margin-right: 34rpx;margin-left: 10rpx;">{{item.LikeNumber}}</text>
+          <image  data-index="{{item._id}}" class="likee" src="cloud://s-6gj66i67d89df4ed.732d-s-6gj66i67d89df4ed-1327638085/社交-对话框2.png"></image>
+          <text style="margin-left:10rpx;">{{item.CommentNumber}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{MyMoments.length === 0}}" style="display: flex;justify-content: center;margin-top: 140rpx;">
+      <text style="font-size: 60rpx;font-weight: 1000;">暂时还未发布内容</text>
+    </view>
+  </scroll-view>
+
+</swiper-item>
+
+ 
+</swiper>

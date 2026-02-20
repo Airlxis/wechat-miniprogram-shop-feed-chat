@@ -1,0 +1,19 @@
+/* pages/MyWant/MyWant.wxss */
+.goodsform{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 19rpx;
+
+}
+.singlegood{
+  width: 47%; /* 留出一点间隙，避免在某些屏幕上溢出 */
+  margin: 0 1.5% 19rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+
+ .picture{
+  margin: 19rpx;
+  width: 100%;
+}

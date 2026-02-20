@@ -1,0 +1,4 @@
+/* pages/IPdetail/IPdetail.wxss */
+page{
+  background-color: #ffe79f;
+}

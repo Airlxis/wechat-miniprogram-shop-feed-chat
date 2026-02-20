@@ -1,0 +1,47 @@
+{
+  "pages": [
+
+    "pages/LogIn/LogIn",
+      "pages/AccountNumberLogin/AccountNumberLogin",
+      "pages/Register/Register",
+      "pages/Agrement/Agrement",
+      "pages/protocol/protocol",
+    "pages/shopping/shopping",
+      "pages/AddGoods/AddGoods",
+      "pages/GoodDetail/GoodDetail",
+    "pages/square/square",
+      "pages/SendMoment/SendMoment",
+      "pages/MomentDetail/MomentDetail",
+      "pages/TagDetail/TagDetail",
+    "pages/messages/message",
+        "pages/GroupChatting/GroupChatting",
+        "pages/Friendchat/Friendchat",
+        "pages/Negotiationchat/Negotiationchat",
+        "pages/AddGroup/AddGroup",
+          "pages/IPdetail/IPdetail",
+        "pages/Application/Application",
+    "pages/mine/mine",
+      "pages/settings/settings",
+      "pages/MySelling/MySelling",
+      "pages/MyWant/MyWant",
+      "pages/MyMoment/MyMoment",
+      "pages/MyLiking/MyLiking",
+    "pages/other/other",
+  "pages/test/test"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTextStyle": "black"
+  },
+
+
+
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+  
+
+}

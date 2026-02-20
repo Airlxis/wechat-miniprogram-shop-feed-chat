@@ -1,0 +1,49 @@
+/* pages/LogIn/LogIn.wxss */
+.container{
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 519rpx; 
+}
+
+.text{
+  font-size: 96rpx; 
+ text-align: center; 
+}
+
+.wxLogin{
+  height: 115rpx;
+  background-color: #2eb365; 
+  color: #ffffff; 
+}
+
+.AccountNumberLogin{
+  height: 115rpx;
+  background-color: #c8c9c8; 
+  color: #000000; 
+}
+
+.register{
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 385rpx;
+  width: auto;
+}
+
+.registerbutton{
+  height: 115rpx;
+  font-size: 29rpx;
+  background-color: #e7a833;
+  width: 192rpx;
+ 
+}
+
+@font-face{
+  font-family: "ttt";
+  src: url('');
+}
+
+.button{
+  font-family:'ttt';
+}

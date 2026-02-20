@@ -1,0 +1,29 @@
+<!--pages/MyWant/MyWant.wxml-->
+
+
+<!--顶部导航栏-->
+<text style="position: fixed;margin-right: auto;margin-top: 110rpx;z-index: 2;" bind:tap="NavigateBack">返回</text>
+<view style="width: 100%;height: 180rpx;display: flex;;justify-content: center;background-color: rgb(255, 255, 255);align-items: center;position: fixed;z-index: 1;">
+  <text style="margin-top: 70rpx;font-size: 40rpx;">想要</text>
+</view>
+
+
+<text style="margin-top: 180rpx;">长按可进行编辑</text>
+
+<view class="goodsform" wx:if="{{MyWant.length !== 0}}" style="padding-top: 100rpx;margin-top: -40rpx;margin-bottom: 150rpx;">
+
+<view  class="singlegood"  wx:for="{{MyWant}}"  wx:key="_id" data-id="{{item._id}}"  bindtap="goToGoodDetail" bind:longpress="Delete">
+  <view style="background-color: white;width: 100%;display: flex;justify-content: center;border-radius: 10rpx;box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);  transition: transform 0.3s ease;">
+    <image class="picture" mode="aspectFill" src="{{item.MainImageFileID}}"></image>
+  </view>  
+  <view style="display: flex;flex-direction: column;align-self: flex-start;">
+    <text>{{item.MainIntroduction}}</text>
+    <text style="font-size: 40rpx;">￥{{item.Price}}</text>
+  </view>
+</view>
+
+</view>
+
+<view wx:if="{{MyWant.length === 0}}" style="display: flex;justify-content: center;margin-top: 140rpx;">
+  <text style="font-size: 60rpx;font-weight: 1000;">未收藏商品</text>
+</view>
